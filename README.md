@@ -1,11 +1,5 @@
-# ScopeWorks Site v2
+# ScopeWorks Site v2 Fixed
 
-Production v2 static landing page for https://scope-works.net
+This version links to `/style-v2.css?v=20260604a` to avoid stale CSS cache from the previous deployment.
 
-## Upload
-
-Upload all files to the root of the GitHub repository and commit changes.
-
-## Logo
-
-The header currently uses a text wordmark. When the final logo is ready, replace the `.wordmark` area in `index.html` or add an image file and update the header markup.
+Upload all files to the GitHub repository root and commit changes.
