@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 1920 1920">
-  <title>ScopeWorks Symbol - Black</title>
-  <g transform="translate(0,1920) scale(0.1,-0.1)" fill="#0B0B0B" stroke="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="160" viewBox="0 0 360 80">
+  <title>ScopeWorks - Primary</title>
+  <g transform="translate(5,75) scale(0.003646,-0.003646)" fill="#0B0B0B" stroke="none">
     <path d="M5836 16049 c-517 -55 -1017 -243 -1396 -527 -482 -360 -844 -884
 -990 -1437 -42 -158 -67 -311 -80 -482 -8 -105 -10 -1201 -8 -3768 4 -3394 5
 -3627 21 -3735 78 -511 287 -972 607 -1345 478 -554 1107 -882 1843 -960 129
@@ -35,4 +35,7 @@ l17 21 1370 3 c1473 3 1397 1 1550 52 271 92 478 305 561 580 24 81 27 106 28
 1122 -40 159 -50 246 -49 431 1 351 88 640 276 922 270 405 739 684 1238 737
 124 12 2583 13 2710 1z"/>
   </g>
+  <text x="95" y="50" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
+        font-weight="500" font-size="30" fill="#0B0B0B" letter-spacing="-0.3"
+        dominant-baseline="middle">ScopeWorks</text>
 </svg>
