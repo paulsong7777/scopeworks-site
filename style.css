@@ -102,12 +102,15 @@ h1 {
   letter-spacing: -0.035em;
 }
 
-.actions {
+.actions,
+.contact-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 34px;
 }
+
+.contact-actions { margin-top: 28px; }
 
 .button {
   display: inline-flex;
@@ -184,7 +187,8 @@ h1 {
 
 .product,
 .company,
-.contact {
+.contact,
+.status-section {
   width: min(1180px, 100%);
   margin: 0 auto;
   padding: 110px clamp(22px, 5vw, 72px);
@@ -201,7 +205,8 @@ h1 {
 
 .section-heading h2,
 .company-statement h2,
-.contact h2 {
+.contact h2,
+.status-card h2 {
   margin-bottom: 0;
   font-size: clamp(42px, 6vw, 92px);
   line-height: .9;
@@ -234,14 +239,16 @@ h1 {
 }
 
 .stack span,
-.number {
+.number,
+.solve-grid span {
   color: var(--green);
   font-weight: 900;
   font-size: 13px;
 }
 
 .stack h3,
-.method-grid h3 {
+.method-grid h3,
+.solve-grid h3 {
   margin-bottom: 8px;
   font-size: 28px;
   line-height: 1;
@@ -251,7 +258,63 @@ h1 {
 .stack p,
 .method-grid p,
 .company-copy p,
-.contact p { color: var(--muted); }
+.contact p,
+.solve-grid p,
+.status-card p,
+.privacy-body p,
+.privacy-body li { color: var(--muted); }
+
+
+
+.solve {
+  width: 100%;
+  padding: 110px clamp(22px, 5vw, 72px);
+  background: #ecebe4;
+  border-top: 1px solid var(--line);
+}
+
+.solve-inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.solve-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 56px;
+}
+
+.solve-grid article {
+  min-height: 260px;
+  padding: 26px;
+  background: rgba(255,255,255,.7);
+  border: 1px solid rgba(15,17,16,.1);
+  border-radius: 26px;
+}
+
+.solve-grid h3 { margin-top: 48px; }
+
+.status-card {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(36px, 7vw, 90px);
+  align-items: start;
+  padding: clamp(30px, 5vw, 54px);
+  background: var(--dark);
+  color: #eff4ee;
+  border-radius: 34px;
+  box-shadow: var(--shadow);
+}
+
+.status-card .eyebrow { color: #a9d7b8; }
+
+.status-card p {
+  margin-bottom: 0;
+  font-size: 21px;
+  color: rgba(239,244,238,.74);
+  letter-spacing: -.03em;
+}
 
 .method {
   width: 100%;
@@ -330,7 +393,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 28px;
   padding: 32px clamp(22px, 5vw, 72px);
   color: var(--muted);
   border-top: 1px solid var(--line);
@@ -348,7 +411,8 @@ h1 {
   .hero,
   .product-grid,
   .company,
-  .section-heading {
+  .section-heading,
+  .status-card {
     grid-template-columns: 1fr;
   }
 
@@ -359,6 +423,10 @@ h1 {
 
   .method-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .solve-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -397,4 +465,61 @@ h1 {
   .email { word-break: break-all; }
 
   .footer { flex-direction: column; }
+}
+
+
+.footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer a:hover { color: var(--ink); }
+
+.privacy-main {
+  width: min(960px, 100%);
+  margin: 0 auto;
+  padding: 110px clamp(22px, 5vw, 72px);
+}
+
+.privacy-main h1 {
+  font-size: clamp(48px, 8vw, 96px);
+  margin-bottom: 28px;
+}
+
+.privacy-body {
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+  font-size: 19px;
+}
+
+.privacy-body h2 {
+  margin-top: 44px;
+  margin-bottom: 12px;
+  font-size: 28px;
+  letter-spacing: -.04em;
+}
+
+.privacy-body ul { padding-left: 22px; }
+
+@media (max-width: 640px) {
+  .solve,
+  .status-section,
+  .privacy-main {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .footer {
+    align-items: flex-start;
+  }
+
+  .footer-meta {
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
 }
