@@ -1,37 +1,27 @@
-# ScopeWorks ImjangBox v6 wording clean upload
+# ScopeWorks site copy refinement v7
 
-이번 버전은 `/imjangbox/` 페이지와 메인 홈페이지의 임장박스 관련 문구를 다시 정리한 버전입니다.
-
-## 변경 내용
-
-- `주장`, `주장성 정보`, `주장과 사실을 구분` 계열 표현을 제거했습니다.
-- 공인중개사 업무에 더 가까운 표현으로 바꿨습니다.
-  - 사진과 조건이 따로 남습니다
-  - 최근 조건을 놓치기 쉽습니다
-  - 고객 제안은 매번 새로 만듭니다
-  - 고객에게 보낼 매물 요약
-- `Verify` 중심 표현을 `정리`, `조건 보강`, `공유 내용 선택` 쪽으로 완화했습니다.
-- 메인 페이지의 임장박스 진입 버튼은 유지했습니다.
-- 기존 ScopeWorks `style-v3.css` 톤은 유지했습니다.
-
-## 업로드 파일
-
-레포 루트에서 아래 파일을 교체하세요.
+## 포함 파일
 
 - `index.html`
 - `imjangbox/index.html`
 - `sitemap.xml`
 
-## 추천 커밋 메시지
+## 반영 내용
+
+- 메인 페이지 Product/Contact 문구를 조금 더 자연스럽게 정리
+- `/imjangbox/` Hero 문구에서 내부자 표현인 MVP 강조를 줄이고, 실제 제품 효용 중심으로 수정
+- `공유 정보 선별` → `제안 정보 선별`
+- `고객에게 보낼 정보` → `고객에게 보낼 내용`
+- Scope 섹션 원칙 문구를 더 짧고 단단하게 정리
+- 버튼 문구를 한국어 중심으로 통일
+
+## 업로드 방법
+
+1. ZIP 압축을 푼다.
+2. GitHub `scopeworks-site` 레포 루트에 파일을 덮어쓴다.
+3. `index.html`, `imjangbox/index.html`, `sitemap.xml`을 교체한다.
+4. Commit message 예시:
 
 ```text
-Refine ImjangBox real estate wording
-```
-
-## 확인할 주소
-
-```text
-https://scope-works.net/
-https://scope-works.net/imjangbox/
-https://scope-works.net/sitemap.xml
+Polish ScopeWorks and ImjangBox copy
 ```
