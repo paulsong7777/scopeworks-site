@@ -3,503 +3,178 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ImjangBox | 상가 전문 공인중개사용 현장 기록·제안 장부</title>
-  <meta name="description" content="임장박스는 상가 전문 공인중개사가 현장에서 확인한 상가 매물 정보를 기록하고, 시설 조건·업종 가능성·확인 상태를 정리해 고객 제안 카드로 연결하는 MVP입니다." />
+
+  <title>ImjangBox | Commercial Property Workflow by ScopeWorks</title>
+  <meta name="description" content="ImjangBox는 상가 전문 공인중개사가 현장에서 확인한 상가 정보를 기록하고, 시설 조건·업종 가능성·확인 상태를 정리해 고객 제안까지 이어가도록 돕는 MVP입니다." />
+  <meta name="theme-color" content="#0E1512" />
+
   <link rel="canonical" href="https://scope-works.net/imjangbox/" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="ScopeWorks" />
-  <meta property="og:title" content="ImjangBox by ScopeWorks" />
-  <meta property="og:description" content="상가 전문 공인중개사를 위한 현장 기록·확인·고객 제안 장부 MVP" />
-  <meta property="og:url" content="https://scope-works.net/imjangbox/" />
-  <meta property="og:image" content="https://scope-works.net/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
-  <style>
-    :root {
-      --bg: #f7f4ef;
-      --surface: #fffaf3;
-      --surface-strong: #ffffff;
-      --ink: #1e252b;
-      --muted: #68717a;
-      --line: rgba(30, 37, 43, 0.12);
-      --navy: #102030;
-      --navy-soft: #18344a;
-      --accent: #d97706;
-      --accent-dark: #92400e;
-      --green: #1f7a53;
-      --shadow: 0 26px 70px rgba(16, 32, 48, 0.14);
-      --radius-xl: 32px;
-      --radius-lg: 24px;
-      --radius-md: 18px;
-      --max: 1120px;
-    }
+  <meta property="og:site_name" content="ScopeWorks" />
+  <meta property="og:title" content="ImjangBox | Field notes to client-ready proposals." />
+  <meta property="og:description" content="상가 전문 공인중개사를 위한 현장 기록·확인·고객 제안 장부 MVP" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://scope-works.net/imjangbox/" />
+  <meta property="og:image" content="https://scope-works.net/og-image.png" />
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at top left, rgba(217, 119, 6, 0.13), transparent 34rem),
-        radial-gradient(circle at 85% 10%, rgba(16, 32, 48, 0.12), transparent 30rem),
-        linear-gradient(180deg, #fbf8f3 0%, var(--bg) 46%, #f3eee6 100%);
-      line-height: 1.6;
-      word-break: keep-all;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ImjangBox by ScopeWorks" />
+  <meta name="twitter:description" content="Field notes to client-ready proposals." />
+  <meta name="twitter:image" content="https://scope-works.net/og-image.png" />
 
-    .skip {
-      position: absolute;
-      left: -999px;
-      top: auto;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-    }
-    .skip:focus {
-      left: 24px;
-      top: 24px;
-      width: auto;
-      height: auto;
-      padding: 12px 16px;
-      background: var(--navy);
-      color: white;
-      border-radius: 999px;
-      z-index: 999;
-    }
-
-    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background: rgba(247, 244, 239, 0.78);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav {
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.03em; }
-    .brand img { width: 168px; height: auto; }
-    .brand-text { font-size: 1.05rem; }
-    .nav-links { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 0.94rem; }
-    .nav-links a { padding: 9px 12px; border-radius: 999px; }
-    .nav-links a:hover { background: rgba(16, 32, 48, 0.06); color: var(--ink); }
-    .nav-links .pill { border: 1px solid var(--line); background: rgba(255,255,255,.55); color: var(--ink); }
-
-    .hero { padding: 86px 0 58px; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.04fr .96fr;
-      gap: 44px;
-      align-items: center;
-    }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(31, 122, 83, 0.1);
-      color: var(--green);
-      font-weight: 800;
-      font-size: .86rem;
-      letter-spacing: .02em;
-      margin-bottom: 22px;
-    }
-    .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 99px; background: currentColor; }
-    h1 {
-      font-size: clamp(3.1rem, 9vw, 7.4rem);
-      line-height: .88;
-      letter-spacing: -0.085em;
-      margin: 0 0 18px;
-      color: var(--navy);
-    }
-    .hero h2 {
-      margin: 0;
-      font-size: clamp(1.5rem, 3.2vw, 2.55rem);
-      line-height: 1.16;
-      letter-spacing: -0.055em;
-      color: var(--ink);
-    }
-    .hero-copy { margin: 22px 0 0; max-width: 680px; color: var(--muted); font-size: 1.08rem; }
-    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 18px;
-      border-radius: 999px;
-      font-weight: 850;
-      border: 1px solid var(--line);
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-    }
-    .button:hover { transform: translateY(-1px); }
-    .button.primary { background: var(--navy); color: white; box-shadow: 0 14px 34px rgba(16, 32, 48, .22); border-color: var(--navy); }
-    .button.primary:hover { background: var(--navy-soft); }
-    .button.secondary { background: rgba(255,255,255,.68); color: var(--ink); }
-    .button.secondary:hover { background: white; }
-
-    .product-card {
-      position: relative;
-      background: linear-gradient(145deg, #112235, #1a3b52);
-      color: white;
-      border-radius: var(--radius-xl);
-      padding: 30px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      min-height: 430px;
-    }
-    .product-card::before {
-      content: "";
-      position: absolute;
-      inset: -90px -80px auto auto;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: rgba(217, 119, 6, 0.33);
-      filter: blur(2px);
-    }
-    .product-card::after {
-      content: "";
-      position: absolute;
-      inset: auto auto -110px -70px;
-      width: 230px;
-      height: 230px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-    }
-    .card-inner { position: relative; z-index: 1; }
-    .mini-label { font-size: .78rem; text-transform: uppercase; letter-spacing: .16em; color: rgba(255,255,255,.62); font-weight: 800; }
-    .product-card h3 { font-size: 1.65rem; line-height: 1.18; letter-spacing: -0.055em; margin: 14px 0 16px; }
-    .product-card p { color: rgba(255,255,255,.74); margin: 0; }
-    .flow { display: grid; gap: 10px; margin-top: 28px; }
-    .flow-item {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.09);
-      border: 1px solid rgba(255,255,255,.13);
-    }
-    .flow-item strong { letter-spacing: -0.02em; }
-    .flow-item span { color: rgba(255,255,255,.58); font-size: .9rem; }
-
-    section { padding: 72px 0; }
-    .section-head { max-width: 760px; margin-bottom: 28px; }
-    .section-kicker {
-      margin: 0 0 10px;
-      color: var(--accent-dark);
-      font-size: .82rem;
-      text-transform: uppercase;
-      font-weight: 900;
-      letter-spacing: .14em;
-    }
-    .section-title {
-      margin: 0;
-      font-size: clamp(2rem, 4.5vw, 3.45rem);
-      line-height: 1.02;
-      letter-spacing: -0.075em;
-      color: var(--navy);
-    }
-    .section-copy { color: var(--muted); margin: 18px 0 0; font-size: 1.02rem; max-width: 760px; }
-
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .panel {
-      background: rgba(255,255,255,.72);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      box-shadow: 0 12px 34px rgba(16, 32, 48, 0.06);
-    }
-    .panel .num {
-      width: 36px; height: 36px; border-radius: 12px;
-      display: grid; place-items: center;
-      background: rgba(217, 119, 6, .12);
-      color: var(--accent-dark);
-      font-weight: 900;
-      margin-bottom: 22px;
-    }
-    .panel h3 { margin: 0 0 10px; font-size: 1.18rem; letter-spacing: -0.035em; }
-    .panel p { margin: 0; color: var(--muted); font-size: .96rem; }
-
-    .solution { background: rgba(16, 32, 48, 0.045); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .solution .panel { background: var(--surface-strong); }
-    .wordmark { font-size: .88rem; color: var(--accent-dark); font-weight: 900; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 20px; }
-
-    .audience-wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: 22px; align-items: start; }
-    .audience-list { display: grid; gap: 14px; }
-    .audience-item { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--line); background: rgba(255,255,255,.72); }
-    .audience-icon { width: 44px; height: 44px; border-radius: 15px; background: var(--navy); color: white; display: grid; place-items: center; font-weight: 900; }
-    .audience-item h3 { margin: 0 0 4px; font-size: 1.05rem; }
-    .audience-item p { margin: 0; color: var(--muted); font-size: .94rem; }
-
-    .status-card {
-      background: linear-gradient(135deg, rgba(255,255,255,.88), rgba(255,250,243,.86));
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      padding: clamp(26px, 5vw, 42px);
-      box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 28px;
-      align-items: start;
-    }
-    .status-badge { display: inline-flex; align-items: center; gap: 9px; padding: 9px 12px; border-radius: 999px; background: rgba(31,122,83,.1); color: var(--green); font-weight: 900; }
-    .status-badge::before { content: ""; width: 9px; height: 9px; background: currentColor; border-radius: 50%; }
-    .check-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-    .check-list li { position: relative; padding-left: 28px; color: var(--muted); }
-    .check-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--green); font-weight: 900; }
-
-    .contact { padding-bottom: 92px; }
-    .contact-box {
-      background: var(--navy);
-      color: white;
-      border-radius: var(--radius-xl);
-      padding: clamp(30px, 6vw, 56px);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 28px;
-      align-items: center;
-      box-shadow: var(--shadow);
-    }
-    .contact-box h2 { margin: 0 0 14px; font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.02; letter-spacing: -0.075em; }
-    .contact-box p { margin: 0; color: rgba(255,255,255,.72); max-width: 760px; }
-    .contact-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
-    .contact .button.primary { background: white; color: var(--navy); border-color: white; box-shadow: none; }
-    .contact .button.secondary { background: transparent; color: white; border-color: rgba(255,255,255,.25); }
-
-    .site-footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: .92rem; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 16px; align-items: center; flex-wrap: wrap; }
-    .footer-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
-    .footer-links a:hover { color: var(--ink); }
-
-    @media (max-width: 900px) {
-      .hero { padding-top: 58px; }
-      .hero-grid, .audience-wrap, .status-card, .contact-box { grid-template-columns: 1fr; }
-      .product-card { min-height: 0; }
-      .grid-3 { grid-template-columns: 1fr; }
-      .contact-actions { justify-content: flex-start; }
-      .nav { height: 66px; }
-      .brand img { width: 142px; }
-      .nav-links a:not(.pill) { display: none; }
-    }
-    @media (max-width: 560px) {
-      .container { width: min(100% - 28px, var(--max)); }
-      section { padding: 54px 0; }
-      .hero { padding: 46px 0 36px; }
-      .product-card, .panel, .status-card, .contact-box { border-radius: 22px; }
-      .button { width: 100%; }
-      .cta-row, .contact-actions { width: 100%; }
-      .nav-links .pill { padding-inline: 10px; }
-    }
-  </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "ImjangBox",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "description": "상가 전문 공인중개사를 위한 현장 기록·확인·고객 제안 장부 MVP",
-    "url": "https://scope-works.net/imjangbox/",
-    "publisher": {
-      "@type": "Organization",
-      "name": "ScopeWorks",
-      "url": "https://scope-works.net/",
-      "email": "hello@scope-works.net"
-    }
-  }
-  </script>
+  <link rel="stylesheet" href="/style-v3.css?v=20260605b" />
 </head>
 <body>
-  <a class="skip" href="#main">본문으로 이동</a>
-
   <header class="site-header">
-    <div class="container nav" aria-label="Main navigation">
-      <a class="brand" href="/" aria-label="ScopeWorks home">
-        <img src="/logo.svg" alt="ScopeWorks" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
-        <span class="brand-text" style="display:none;">ScopeWorks</span>
-      </a>
-      <nav class="nav-links" aria-label="Page navigation">
-        <a href="/">Back to ScopeWorks</a>
-        <a href="#problem">Problem</a>
-        <a href="#solution">Solution</a>
-        <a class="pill" href="https://docs.google.com/forms/d/e/1FAIpQLSdA_9wyBIyGk60wJMkXWA0QZ81RhQ4heFFH1GMJtZ8MtcViuQ/viewform?usp=sharing&ouid=108030737834910059226" target="_blank" rel="noopener noreferrer">Contact</a>
-      </nav>
-    </div>
+    <a class="wordmark" href="/" aria-label="ScopeWorks home"><img src="/logo.svg" alt="ScopeWorks" /></a>
+    <nav class="nav" aria-label="Product navigation">
+      <a href="#product">Product</a>
+      <a href="#method">Method</a>
+      <a href="#status">Status</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <main id="main">
+  <main id="top">
     <section class="hero">
-      <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Currently validating</p>
+        <h1>ImjangBox</h1>
+        <p class="hero-text">
+          상가 전문 공인중개사를 위한 현장 기록·확인·고객 제안 장부.
+          현장에서 확인한 상가 정보를 흩어지지 않게 기록하고,
+          고객에게 제안 가능한 흐름으로 정리합니다.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdA_9wyBIyGk60wJMkXWA0QZ81RhQ4heFFH1GMJtZ8MtcViuQ/viewform?usp=sharing&amp;ouid=108030737834910059226" target="_blank" rel="noopener">MVP 테스트 문의하기</a>
+          <a class="button ghost" href="/">Back to ScopeWorks</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="ImjangBox workflow">
+        <div class="panel-top">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="panel-body">
+          <p class="panel-label">IMJANGBOX / FIELD WORKFLOW</p>
+          <div class="flow-line"><span>Field</span><strong>Record the property</strong></div>
+          <div class="flow-line"><span>Check</span><strong>Separate claims from facts</strong></div>
+          <div class="flow-line"><span>Proposal</span><strong>Hide internal notes</strong></div>
+          <div class="flow-line active"><span>Outcome</span><strong>Send a client-ready card</strong></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="product" class="product">
+      <div class="section-heading">
+        <p class="eyebrow">Product</p>
+        <h2>Field notes to client-ready proposals.</h2>
+      </div>
+      <div class="product-grid">
+        <div class="product-copy">
+          <p>
+            ImjangBox는 범용 부동산 CRM이 아니라, 상가 전문 중개사의 현장 업무 흐름을 좁게 다루는 MVP입니다.
+            주소, 사진, 가격 조건, 시설 상태, 업종 가능성, 확인 상태를 한 곳에 정리하는 데 집중합니다.
+          </p>
+          <p>
+            핵심은 더 많은 기능이 아니라, 현장에서 본 상가를 나중에 다시 제안 가능한 정보로 바꾸는 것입니다.
+          </p>
+        </div>
+        <div class="stack">
+          <article><span>01</span><div><h3>Record</h3><p>주소, 사진, 조건, 권리금, 현장 메모를 빠르게 남깁니다.</p></div></article>
+          <article><span>02</span><div><h3>Verify</h3><p>임대인 주장, 임차인 주장, 현장 확인, 서류 확인을 구분합니다.</p></div></article>
+          <article><span>03</span><div><h3>Propose</h3><p>내부 정보는 제외하고 고객에게 보낼 제안 카드로 정리합니다.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="solve" aria-labelledby="solve-title">
+      <div class="solve-inner">
+        <div class="section-heading compact">
+          <p class="eyebrow">What breaks</p>
+          <h2 id="solve-title">The work breaks when commercial property information gets scattered.</h2>
+        </div>
+        <div class="solve-grid">
+          <article><span>01</span><h3>Scattered field notes</h3><p>주소, 사진, 가격 조건, 현장 메모가 카톡·사진첩·엑셀·메모장에 나뉘어 저장됩니다.</p></article>
+          <article><span>02</span><h3>Unverified information</h3><p>주장성 정보와 확인된 정보가 섞이면 고객 응대와 협의 과정에서 위험이 커집니다.</p></article>
+          <article><span>03</span><h3>Repeated proposal work</h3><p>고객에게 제안할 때마다 사진을 고르고 조건을 다시 정리하는 반복 업무가 생깁니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="method">
+      <div class="method-inner">
+        <div class="section-heading compact">
+          <p class="eyebrow">Workflow</p>
+          <h2>Record. Verify. Propose. Keep it narrow.</h2>
+        </div>
+        <div class="method-grid">
+          <article><p class="number">01</p><h3>Fast field entry</h3><p>현장에서 1분 안에 상가 기본 정보와 사진을 임시 저장합니다.</p></article>
+          <article><p class="number">02</p><h3>Facility checks</h3><p>덕트, 급배수, 가스, 전기, 화장실, 주차, 간판 조건을 체크합니다.</p></article>
+          <article><p class="number">03</p><h3>Verification state</h3><p>미확인, 주장, 현장 확인, 서류 확인 상태를 구분합니다.</p></article>
+          <article><p class="number">04</p><h3>Proposal card</h3><p>고객에게 보여줄 수 있는 정보만 골라 제안 카드로 만듭니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="status" class="status-section" aria-labelledby="status-title">
+      <div class="status-card">
         <div>
-          <div class="eyebrow">Currently in validation</div>
-          <h1>ImjangBox</h1>
-          <h2>상가 전문 공인중개사를 위한<br />현장 기록·확인·고객 제안 장부</h2>
-          <p class="hero-copy">
-            현장에서 확인한 상가 정보를 흩어지지 않게 기록하고, 업종 가능성·시설 조건·권리금·확인 상태를 정리해 고객에게 안전하게 제안할 수 있도록 돕습니다.
-          </p>
-          <div class="cta-row">
-            <a class="button primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdA_9wyBIyGk60wJMkXWA0QZ81RhQ4heFFH1GMJtZ8MtcViuQ/viewform?usp=sharing&ouid=108030737834910059226" target="_blank" rel="noopener noreferrer">MVP 테스트 문의하기</a>
-            <a class="button secondary" href="mailto:hello@scope-works.net">hello@scope-works.net</a>
-          </div>
+          <p class="eyebrow">MVP Status</p>
+          <h2 id="status-title">Currently in validation.</h2>
         </div>
-
-        <aside class="product-card" aria-label="ImjangBox workflow">
-          <div class="card-inner">
-            <div class="mini-label">Commercial property workflow</div>
-            <h3>상가 임장 정보를<br />다시 꺼내 쓸 수 있는<br />제안 자료로 바꿉니다.</h3>
-            <p>기능을 크게 벌리기보다, 현장 기록에서 고객 제안까지 끊기는 업무 흐름을 먼저 검증합니다.</p>
-            <div class="flow" aria-label="Core workflow">
-              <div class="flow-item"><strong>Record</strong><span>상가 빠른 등록</span></div>
-              <div class="flow-item"><strong>Verify</strong><span>시설·업종 체크</span></div>
-              <div class="flow-item"><strong>Separate</strong><span>확인 상태 관리</span></div>
-              <div class="flow-item"><strong>Propose</strong><span>고객 제안 카드</span></div>
-            </div>
-          </div>
-        </aside>
+        <p>
+          현재는 상가 전문 공인중개사의 현장 기록·확인·고객 제안 흐름을 줄이는 MVP 검증 단계입니다.
+          완성된 대형 서비스가 아니라, 실제 업무에 맞는지 작게 확인하고 있습니다.
+        </p>
       </div>
     </section>
 
-    <section id="problem" aria-labelledby="problem-title">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-kicker">Problem</p>
-          <h2 class="section-title" id="problem-title">상가 중개 업무는 현장에서 끊깁니다.</h2>
-          <p class="section-copy">
-            주소, 사진, 가격 조건, 시설 상태, 권리금, 통화 내용은 계속 쌓이지만 실제 업무에서는 카카오톡, 사진첩, 메모장, 엑셀, 기억 속에 흩어지는 경우가 많습니다.
-          </p>
-        </div>
-        <div class="grid-3">
-          <article class="panel">
-            <div class="num">1</div>
-            <h3>현장 메모가 흩어집니다.</h3>
-            <p>주소, 사진, 가격 조건, 현장 메모가 카카오톡·사진첩·엑셀·메모장에 나뉘어 저장됩니다. 나중에 고객에게 제안하려면 다시 찾고 다시 정리해야 합니다.</p>
-          </article>
-          <article class="panel">
-            <div class="num">2</div>
-            <h3>확인된 정보와 주장성 정보가 섞입니다.</h3>
-            <p>임대인 주장, 임차인 주장, 공동중개사 전달, 현장 확인, 서류 확인이 구분되지 않으면 고객 응대와 협의 과정에서 위험이 생길 수 있습니다.</p>
-          </article>
-          <article class="panel">
-            <div class="num">3</div>
-            <h3>제안 자료를 매번 다시 만듭니다.</h3>
-            <p>사진을 다시 고르고, 조건을 다시 정리하고, 장점과 주의사항을 다시 써야 합니다. 반복되는 제안 업무는 중개사의 시간을 계속 소모합니다.</p>
-          </article>
-        </div>
+    <section class="company" aria-labelledby="not-title">
+      <div class="company-statement">
+        <p class="eyebrow">Scope</p>
+        <h2 id="not-title">판단을 대신하지 않고,<br />흐름을 정리합니다.</h2>
+      </div>
+      <div class="company-copy">
+        <p>
+          ImjangBox는 자동 업종 판정, 상권분석 점수, 광고문구 자동 생성으로 중개사의 판단을 대체하려는 도구가 아닙니다.
+          1차 목표는 현장 정보를 구조화하고, 확인 상태를 남기고, 고객에게 안전하게 보낼 수 있는 자료로 정리하는 것입니다.
+        </p>
+        <ul>
+          <li>No automatic business-type judgment</li>
+          <li>No internal notes in public proposal cards</li>
+          <li>No oversized CRM before workflow validation</li>
+        </ul>
       </div>
     </section>
 
-    <section class="solution" id="solution" aria-labelledby="solution-title">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-kicker">Solution</p>
-          <h2 class="section-title" id="solution-title">현장 기록에서 고객 제안까지, 한 흐름으로 정리합니다.</h2>
-        </div>
-        <div class="grid-3">
-          <article class="panel">
-            <div class="wordmark">Record</div>
-            <h3>상가 정보를 빠르게 저장</h3>
-            <p>상가 주소, 사진, 가격 조건, 권리금, 현재 업종, 간단 메모를 빠르게 저장합니다. 현장에서 본 정보를 나중에 다시 꺼내 쓸 수 있는 형태로 남깁니다.</p>
-          </article>
-          <article class="panel">
-            <div class="wordmark">Verify</div>
-            <h3>시설·업종 조건을 확인</h3>
-            <p>덕트, 급배수, 가스, 전기, 화장실, 주차, 간판 등 상가 실사 항목을 체크하고 각 정보가 미확인인지, 주장인지, 현장 확인인지, 서류 확인인지 구분합니다.</p>
-          </article>
-          <article class="panel">
-            <div class="wordmark">Propose</div>
-            <h3>고객 제안 카드로 정리</h3>
-            <p>고객에게 보여줄 수 있는 정보만 골라 제안 카드로 정리합니다. 내부 메모, 연락처, 협의 가능 가격, 리스크 메모는 공유 화면에서 제외하는 구조를 지향합니다.</p>
-          </article>
-        </div>
+    <section id="contact" class="contact">
+      <p class="eyebrow">Contact</p>
+      <h2>상가 현장 업무에 맞는지 함께 확인해보고 싶습니다.</h2>
+      <p>
+        상가 매물 기록, 시설 체크, 확인 상태 관리, 고객 제안 자료 정리에 불편을 느끼고 있다면 편하게 문의해 주세요.
+      </p>
+      <div class="contact-actions">
+        <a class="button primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdA_9wyBIyGk60wJMkXWA0QZ81RhQ4heFFH1GMJtZ8MtcViuQ/viewform?usp=sharing&amp;ouid=108030737834910059226" target="_blank" rel="noopener">Open Contact Form</a>
+        <a class="button ghost" href="mailto:hello@scope-works.net">Email directly</a>
       </div>
-    </section>
-
-    <section id="audience" aria-labelledby="audience-title">
-      <div class="container audience-wrap">
-        <div class="section-head">
-          <p class="section-kicker">Who it is for</p>
-          <h2 class="section-title" id="audience-title">이런 중개사를 위해 준비하고 있습니다.</h2>
-          <p class="section-copy">임장박스는 범용 부동산 CRM이 아니라, 상가 현장 기록과 고객 제안이 잦은 중개 업무에 맞춰 검증 중입니다.</p>
-        </div>
-        <div class="audience-list">
-          <article class="audience-item">
-            <div class="audience-icon">01</div>
-            <div><h3>상가 전문 1인 공인중개사</h3><p>직접 현장을 돌며 매물을 확보하고, 사진·메모·가격 조건을 빠르게 정리해야 하는 중개사</p></div>
-          </article>
-          <article class="audience-item">
-            <div class="audience-icon">02</div>
-            <div><h3>소규모 상가 중개사무소</h3><p>2~5명 규모로 상가, 사무실, 점포 매물을 다루며 팀 안에서 매물 정보를 정리하고 공유해야 하는 사무소</p></div>
-          </article>
-          <article class="audience-item">
-            <div class="audience-icon">03</div>
-            <div><h3>고객 제안이 잦은 현장형 중개사</h3><p>카페, 음식점, 미용실, 학원, 병의원, 사무실 입점 고객에게 조건에 맞는 상가를 빠르게 제안해야 하는 중개사</p></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="status" aria-labelledby="status-title">
-      <div class="container">
-        <div class="status-card">
-          <div>
-            <p class="section-kicker">MVP Status</p>
-            <h2 class="section-title" id="status-title">Currently in validation.</h2>
-            <p class="section-copy">임장박스는 현재 상가 전문 공인중개사의 현장 기록·확인·고객 제안 흐름을 줄이는 MVP 검증 단계입니다.</p>
-          </div>
-          <div>
-            <div class="status-badge">Testing workflow</div>
-            <ul class="check-list" style="margin-top: 22px;">
-              <li>상가 빠른 등록</li>
-              <li>시설·업종 체크</li>
-              <li>확인 상태 관리</li>
-              <li>고객 제안 카드 생성</li>
-              <li>문의 및 테스트 피드백 수집</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="container">
-        <div class="contact-box">
-          <div>
-            <h2 id="contact-title">상가 현장 업무에 맞는지 함께 확인해보고 싶습니다.</h2>
-            <p>상가 매물 기록, 시설 체크, 고객 제안 자료 정리에 불편을 느끼고 있다면 편하게 문의해주세요.</p>
-          </div>
-          <div class="contact-actions">
-            <a class="button primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdA_9wyBIyGk60wJMkXWA0QZ81RhQ4heFFH1GMJtZ8MtcViuQ/viewform?usp=sharing&ouid=108030737834910059226" target="_blank" rel="noopener noreferrer">MVP 테스트 문의하기</a>
-            <a class="button secondary" href="mailto:hello@scope-works.net">Email directly</a>
-          </div>
-        </div>
-      </div>
+      <a class="email" href="mailto:hello@scope-works.net">hello@scope-works.net</a>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>© 2026 ScopeWorks · Daegu, South Korea</div>
-      <div class="footer-links">
-        <a href="mailto:hello@scope-works.net">hello@scope-works.net</a>
-        <a href="/privacy.html">Privacy</a>
-      </div>
+  <footer class="footer">
+    <a class="footer-brand" href="/" aria-label="ScopeWorks home"><img src="/logo.svg" alt="ScopeWorks" /></a>
+    <div class="footer-meta">
+      <span>© 2026 ScopeWorks</span>
+      <span>Daegu, South Korea</span>
+      <a href="mailto:hello@scope-works.net">hello@scope-works.net</a>
+      <a href="/privacy.html">Privacy</a>
     </div>
   </footer>
 </body>

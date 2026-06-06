@@ -1,6 +1,6 @@
-# ScopeWorks / ImjangBox 페이지 업로드 안내
+# ScopeWorks / ImjangBox page v2
 
-이 패키지는 `scope-works.net/imjangbox/` 제품 소개 페이지를 GitHub Pages 레포에 추가하기 위한 파일입니다.
+이번 버전은 기존 `scope-works.net` 메인 사이트와 같은 톤을 맞추기 위해 별도 인라인 CSS를 제거하고, 레포의 기존 `/style-v3.css?v=20260605b`를 그대로 사용합니다.
 
 ## 포함 파일
 
@@ -9,30 +9,27 @@ imjangbox/index.html
 sitemap.xml
 ```
 
-## 업로드 방법
+## 업로드 위치
 
-1. 이 ZIP 파일을 다운로드합니다.
-2. ZIP 압축을 풉니다.
-3. 압축을 푼 폴더 안의 `imjangbox` 폴더와 `sitemap.xml` 파일을 확인합니다.
-4. GitHub 레포 `paulsong7777/scopeworks-site`로 이동합니다.
-5. 레포 루트에서 `Add file` → `Upload files`를 선택합니다.
-6. `imjangbox` 폴더와 `sitemap.xml` 파일을 업로드합니다.
-7. Commit message 예시: `Add ImjangBox landing page`
-8. 배포 후 아래 주소를 확인합니다.
+GitHub `paulsong7777/scopeworks-site` 레포 루트에 아래처럼 반영합니다.
+
+```text
+/imjangbox/index.html
+/sitemap.xml
+```
+
+기존 `imjangbox/index.html`은 새 파일로 교체하면 됩니다.
+
+## 커밋 메시지 추천
+
+```text
+Align ImjangBox page with ScopeWorks site style
+```
+
+## 업로드 후 확인
 
 ```text
 https://scope-works.net/imjangbox/
 ```
 
-## 주의
-
-ZIP 파일 자체를 GitHub에 올리면 사이트에 반영되지 않습니다. 반드시 압축을 푼 뒤 `imjangbox` 폴더와 `sitemap.xml`을 업로드하세요.
-
-## 업로드 후 할 일
-
-1. `https://scope-works.net/imjangbox/` 접속 확인
-2. 모바일 화면 확인
-3. `MVP 테스트 문의하기` 버튼이 Google Form으로 이동하는지 확인
-4. Search Console에서 `https://scope-works.net/imjangbox/` URL 검사
-5. 색인 생성 요청
-6. Sitemaps에서 `sitemap.xml` 다시 제출 또는 새로고침 확인
+브라우저 캐시가 남으면 강력 새로고침 또는 시크릿 창에서 확인하세요.
