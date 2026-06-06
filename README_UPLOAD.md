@@ -1,35 +1,32 @@
-# ScopeWorks / ImjangBox page v2
-
-이번 버전은 기존 `scope-works.net` 메인 사이트와 같은 톤을 맞추기 위해 별도 인라인 CSS를 제거하고, 레포의 기존 `/style-v3.css?v=20260605b`를 그대로 사용합니다.
+# ScopeWorks / ImjangBox v3 refined upload guide
 
 ## 포함 파일
 
-```text
-imjangbox/index.html
-sitemap.xml
-```
+- `index.html`
+  - 메인 ScopeWorks 홈페이지에 `/imjangbox/` 진입 버튼 추가
+  - Header nav에 `ImjangBox` 추가
+  - Product 섹션에 `View ImjangBox` 버튼 추가
 
-## 업로드 위치
+- `imjangbox/index.html`
+  - 기존 ScopeWorks `style-v3.css`를 그대로 사용하는 제품 소개 페이지
+  - 주요 헤드라인을 한국어 중심으로 정리
+  - Hero, Product, What breaks, Workflow, MVP Status, Scope, Contact 구성 유지
 
-GitHub `paulsong7777/scopeworks-site` 레포 루트에 아래처럼 반영합니다.
+- `sitemap.xml`
+  - `/imjangbox/` 포함 상태 유지
 
-```text
-/imjangbox/index.html
-/sitemap.xml
-```
+## 업로드 방법
 
-기존 `imjangbox/index.html`은 새 파일로 교체하면 됩니다.
+1. ZIP 압축을 푼다.
+2. GitHub `scopeworks-site` 레포 루트에 들어간다.
+3. `index.html`을 루트의 기존 파일과 교체한다.
+4. `imjangbox/index.html`을 기존 파일과 교체한다.
+5. `sitemap.xml`을 기존 파일과 교체한다.
+6. Commit message:
+   `Refine ImjangBox page and add homepage entry points`
 
-## 커밋 메시지 추천
+## 확인할 URL
 
-```text
-Align ImjangBox page with ScopeWorks site style
-```
-
-## 업로드 후 확인
-
-```text
-https://scope-works.net/imjangbox/
-```
-
-브라우저 캐시가 남으면 강력 새로고침 또는 시크릿 창에서 확인하세요.
+- https://scope-works.net/
+- https://scope-works.net/imjangbox/
+- https://scope-works.net/sitemap.xml
