@@ -1,32 +1,37 @@
-# ScopeWorks / ImjangBox v3 refined upload guide
+# ScopeWorks ImjangBox v6 wording clean upload
 
-## 포함 파일
+이번 버전은 `/imjangbox/` 페이지와 메인 홈페이지의 임장박스 관련 문구를 다시 정리한 버전입니다.
+
+## 변경 내용
+
+- `주장`, `주장성 정보`, `주장과 사실을 구분` 계열 표현을 제거했습니다.
+- 공인중개사 업무에 더 가까운 표현으로 바꿨습니다.
+  - 사진과 조건이 따로 남습니다
+  - 최근 조건을 놓치기 쉽습니다
+  - 고객 제안은 매번 새로 만듭니다
+  - 고객에게 보낼 매물 요약
+- `Verify` 중심 표현을 `정리`, `조건 보강`, `공유 내용 선택` 쪽으로 완화했습니다.
+- 메인 페이지의 임장박스 진입 버튼은 유지했습니다.
+- 기존 ScopeWorks `style-v3.css` 톤은 유지했습니다.
+
+## 업로드 파일
+
+레포 루트에서 아래 파일을 교체하세요.
 
 - `index.html`
-  - 메인 ScopeWorks 홈페이지에 `/imjangbox/` 진입 버튼 추가
-  - Header nav에 `ImjangBox` 추가
-  - Product 섹션에 `View ImjangBox` 버튼 추가
-
 - `imjangbox/index.html`
-  - 기존 ScopeWorks `style-v3.css`를 그대로 사용하는 제품 소개 페이지
-  - 주요 헤드라인을 한국어 중심으로 정리
-  - Hero, Product, What breaks, Workflow, MVP Status, Scope, Contact 구성 유지
-
 - `sitemap.xml`
-  - `/imjangbox/` 포함 상태 유지
 
-## 업로드 방법
+## 추천 커밋 메시지
 
-1. ZIP 압축을 푼다.
-2. GitHub `scopeworks-site` 레포 루트에 들어간다.
-3. `index.html`을 루트의 기존 파일과 교체한다.
-4. `imjangbox/index.html`을 기존 파일과 교체한다.
-5. `sitemap.xml`을 기존 파일과 교체한다.
-6. Commit message:
-   `Refine ImjangBox page and add homepage entry points`
+```text
+Refine ImjangBox real estate wording
+```
 
-## 확인할 URL
+## 확인할 주소
 
-- https://scope-works.net/
-- https://scope-works.net/imjangbox/
-- https://scope-works.net/sitemap.xml
+```text
+https://scope-works.net/
+https://scope-works.net/imjangbox/
+https://scope-works.net/sitemap.xml
+```
