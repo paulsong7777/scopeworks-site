@@ -4,18 +4,57 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Page Not Found | ScopeWorks</title>
-  <link rel="stylesheet" href="/style-v3.css?v=20260605b" />
+  <meta name="description" content="요청하신 페이지를 찾을 수 없습니다." />
+  <meta name="theme-color" content="#0E1512" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/style-v3.css?v=20260608a" />
 </head>
 <body>
-  <main class="hero">
-    <div class="hero-copy">
-      <p class="eyebrow">404</p>
-      <h1>Page not found.</h1>
-      <p class="hero-text">요청하신 페이지를 찾을 수 없습니다.</p>
-      <div class="actions"><a class="button primary" href="/">Back to Home</a></div>
-    </div>
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="ScopeWorks home"><img src="/logo.svg" alt="ScopeWorks" /></a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/imjangbox/">ImjangBox</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero not-found-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">404</p>
+        <h1>Page not found.</h1>
+        <p class="hero-text">
+          찾으시는 페이지를 찾을 수 없습니다.<br />
+          ScopeWorks 홈으로 돌아가거나 문의를 남겨주세요.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="/">ScopeWorks 홈으로</a>
+          <a class="button ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSdA_9wyBIyGk60wJMkXWA0QZ81RhQ4heFFH1GMJtZ8MtcViuQ/viewform?usp=sharing&amp;ouid=108030737834910059226" target="_blank" rel="noopener">문의 남기기</a>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="Page not found">
+        <div class="panel-top"><span></span><span></span><span></span></div>
+        <div class="panel-body">
+          <p class="panel-label">SCOPEWORKS / ERROR</p>
+          <div class="flow-line"><span>URL</span><strong>Check the address</strong></div>
+          <div class="flow-line"><span>Home</span><strong>Return to ScopeWorks</strong></div>
+          <div class="flow-line active"><span>Contact</span><strong>Ask for help</strong></div>
+        </div>
+      </aside>
+    </section>
   </main>
+
+  <footer class="footer">
+    <a class="footer-brand" href="/" aria-label="ScopeWorks home"><img src="/logo.svg" alt="ScopeWorks" /></a>
+    <div class="footer-meta">
+      <span>© 2026 ScopeWorks</span>
+      <span>대표 송영훈</span>
+      <span>Daegu, South Korea</span>
+      <a href="mailto:hello@scope-works.net">hello@scope-works.net</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+  </footer>
 </body>
 </html>
