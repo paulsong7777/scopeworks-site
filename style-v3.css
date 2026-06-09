@@ -260,7 +260,7 @@ h1 {
 }
 
 
-/* v1.1 Korean readability polish */
+/* v1.2 ScopeWorks tone polish */
 .product-page .hero { min-height: 78vh; }
 .product-page .section-heading h2,
 .product-page .company-statement h2,
@@ -300,4 +300,14 @@ h1 {
   .stack h3, .method-grid h3, .solve-grid h3 { font-size: 22px; line-height: 1.12; }
   .solve-grid article, .method-grid article { min-height: auto; }
   .email { font-size: clamp(26px, 8.5vw, 36px); letter-spacing: -0.055em; }
+}
+
+
+/* v1.2 ScopeWorks tone polish */
+@media (max-width: 640px) {
+  .nav a.optional { display: none; }
+  .site-header { gap: 12px; }
+  .nav { gap: 16px; }
+  .email { font-size: clamp(24px, 7.6vw, 34px); }
+  .contact { min-height: auto; }
 }

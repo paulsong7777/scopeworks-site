@@ -39,3 +39,12 @@ Polish Korean readability and product page tone
 - https://scope-works.net/imjangbox/
 - https://scope-works.net/privacy.html
 - https://scope-works.net/404-test
+
+
+## v1.2 변경 요약
+
+- `From friction to working software.` 메인 슬로건은 유지했습니다.
+- 번역투 카피를 줄이고 ScopeWorks의 문제 정의/실행 중심 톤으로 문구를 재정리했습니다.
+- 모바일 헤더에서 보조 메뉴를 숨겨 상단을 단순화했습니다.
+- 모바일 이메일 크기를 한 번 더 낮췄습니다.
+- CSS 캐시 버전을 `20260609b`로 갱신했습니다.
