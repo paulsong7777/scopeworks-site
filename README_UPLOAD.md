@@ -48,3 +48,10 @@ Polish Korean readability and product page tone
 - 모바일 헤더에서 보조 메뉴를 숨겨 상단을 단순화했습니다.
 - 모바일 이메일 크기를 한 번 더 낮췄습니다.
 - CSS 캐시 버전을 `20260609b`로 갱신했습니다.
+
+
+## v12.1 micro copy polish
+
+- 메인 Product 문구: 현장에서 흩어진 정보를 다시 쓸 수 있게 정리합니다.
+- 메인 Contact 문구: 막힌 지점부터 함께 정리해보겠습니다.
+- 디자인, CSS, OG 이미지는 v12 기준 유지.
